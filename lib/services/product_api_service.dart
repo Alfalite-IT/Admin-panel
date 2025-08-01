@@ -5,10 +5,11 @@ import 'package:http_interceptor/http_interceptor.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import '../models/product.dart';
+import '../config/environment.dart';
 import 'auth_service.dart';
 
 class ProductApiService {
-  final String _baseUrl = 'http://localhost:8080';
+  final String _baseUrl = Environment.apiBaseUrl;
   late final Client _client;
 
   ProductApiService(AuthService authService) {

@@ -3,13 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:admin_panel/config/environment.dart';
 
 enum AuthStatus { loading, authenticated, unauthenticated }
 
 class AuthService with ChangeNotifier {
   final _storage = const FlutterSecureStorage();
-  // TODO: Make this configurable
-  final String _baseUrl = 'http://localhost:8080';
+  final String _baseUrl = Environment.apiBaseUrl;
 
   static const tokenKey = 'auth_token';
 

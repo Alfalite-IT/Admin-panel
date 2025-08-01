@@ -1,9 +1,11 @@
 import 'dart:io';
-import 'package:admin_panel/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../services/product_api_service.dart';
+import '../services/auth_service.dart';
+import '../config/environment.dart';
 import '../services/unauthorized_exception.dart';
 
 class ProductEditDialog extends StatefulWidget {
@@ -256,7 +258,7 @@ class ProductEditDialogState extends State<ProductEditDialog> {
     if (_imageFile != null) {
       imageProvider = FileImage(File(_imageFile!.path));
     } else if (_product.image != null && _product.image!.isNotEmpty) {
-      imageProvider = NetworkImage('http://localhost:8080${_product.image}');
+      imageProvider = NetworkImage(Environment.getServerUrl(_product.image));
     }
 
     return Column(

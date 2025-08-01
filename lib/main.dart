@@ -4,8 +4,15 @@ import 'package:admin_panel/services/auth_service.dart';
 import 'package:admin_panel/services/navigator_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:admin_panel/config/environment.dart';
+import 'package:flutter/foundation.dart';
 
 void main() {
+  // Print environment information for debugging
+  if (kDebugMode) {
+    Environment.printEnvironment();
+  }
+  
   runApp(
     ChangeNotifierProvider(
       create: (_) => AuthService(),
